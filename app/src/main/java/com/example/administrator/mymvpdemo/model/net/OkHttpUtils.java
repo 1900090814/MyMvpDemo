@@ -7,6 +7,7 @@ import android.widget.Toast;
 import com.example.administrator.mymvpdemo.App;
 import com.example.administrator.mymvpdemo.model.callback.MyCallBack;
 import com.example.administrator.mymvpdemo.utils.NetworkFactory;
+import com.example.administrator.mymvpdemo.utils.ToastUtils;
 import com.google.gson.Gson;
 
 import java.io.File;
@@ -132,10 +133,6 @@ public class OkHttpUtils implements IHttp{
 
     @Override
     public <T> void post(String url, Map<String, String> params, final MyCallBack<T> myCallBack) {
-        //判断网络
-        if (NetworkFactory.isNetAvailable()==false){
-            Toast.makeText(App.mActivity, "当前网络不可用", Toast.LENGTH_SHORT).show();
-        }
         FormBody.Builder builder=new FormBody.Builder();
         if (params!=null&&params.size()>1){
             for (Map.Entry<String,String> entry:params.entrySet()){
@@ -150,6 +147,7 @@ public class OkHttpUtils implements IHttp{
                     @Override
                     public void run() {
                         myCallBack.onError(e.toString());
+                        ToastUtils.showShort(App.mActivity,"");
                     }
                 });
             }
@@ -169,10 +167,7 @@ public class OkHttpUtils implements IHttp{
 
     @Override
     public  void downLoad(final String url, final String saveDir, OnDownloadListener onDownloadListener) {
-        //判断网络
-        if (NetworkFactory.isNetAvailable() ==false){
-            Toast.makeText(App.mActivity, "当前网络不可用", Toast.LENGTH_SHORT).show();
-        }
+
         this.onDownloadListener=onDownloadListener;
         Request request=new Request.Builder().url(url).build();
         okHttpClient.newCall(request).enqueue(new Callback() {

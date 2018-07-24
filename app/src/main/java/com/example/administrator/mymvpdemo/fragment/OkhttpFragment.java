@@ -82,7 +82,7 @@ public class OkhttpFragment extends BaseFragment implements HomeContract.OkhttpF
 
     @Override
     public void setErrorMsg(String errorMsg) {
-
+        showToast(errorMsg);
     }
 
     @Override
@@ -94,7 +94,6 @@ public class OkhttpFragment extends BaseFragment implements HomeContract.OkhttpF
     @OnClick({R.id.btn_Load, R.id.btn_DownLoad})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-
             case R.id.btn_Load:
                 mapLoad.put("key","097060266650f67b2cebd2a06aded587");
                 mapLoad.put("type","yule");

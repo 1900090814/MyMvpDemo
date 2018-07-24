@@ -7,9 +7,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.example.administrator.mymvpdemo.App;
+import com.example.administrator.mymvpdemo.utils.ToastUtils;
 
 /**
  * 创建日期：2018/4/25 0025 on 16:22
@@ -62,7 +62,7 @@ public abstract class BaseFragment extends Fragment {
     protected abstract void initFragmentHidden();
 
     public void showToast(String msg){
-        Toast.makeText(getContext(), msg, Toast.LENGTH_SHORT).show();
+        ToastUtils.showShort(getContext(),msg);
     }
 
     public void titleBarFinish(Toolbar toolbar){

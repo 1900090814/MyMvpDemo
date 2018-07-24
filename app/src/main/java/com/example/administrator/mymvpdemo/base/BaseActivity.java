@@ -17,6 +17,7 @@ import com.example.administrator.mymvpdemo.R;
 import com.example.administrator.mymvpdemo.utils.NetworkUtil;
 import com.example.administrator.mymvpdemo.utils.SetPopupwindow;
 import com.example.administrator.mymvpdemo.utils.StatusBar;
+import com.example.administrator.mymvpdemo.utils.ToastUtils;
 
 /**
  * 创建日期：2018/4/25 0025 on 15:53
@@ -49,7 +50,7 @@ public abstract class BaseActivity extends AppCompatActivity{
     public abstract int getActivityLayout();
 
     public void showToast(String msg){
-        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+        ToastUtils.showShort(this,msg);
     };
 
     public PopupWindow showPopupWindow(Context context, int layout ){
